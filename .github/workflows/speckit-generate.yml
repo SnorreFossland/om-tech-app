@@ -1,0 +1,41 @@
+name: SpecKit Generation
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install uv and SpecKit CLI
+        run: |
+          pip install uv
+          uv tool install specify-cli --from git+https://github.com/github/spec-kit.git
+
+      - name: Run SpecKit generation
+        run: |
+          chmod +x scripts/generate_specs.sh
+          ./scripts/generate_specs.sh
+
+      - name: Upload generated specs
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-specs
+          path: specs/
