@@ -45,11 +45,13 @@ A program lead or instructional designer configures session templates and group 
 ## Assumptions
 - Program leads have the authorization to manage templates.
 - Templates are structured definitions stored securely and made available during session creation.
+ - Template edits will auto-propagate to existing sessions by default. Changes that materially alter session structure (for example, removing sections) should surface a migration warning and provide an option to review, approve, or revert changes for affected sessions.
 
 ## Examples
 - Create a "Retrospective" template with sections: Agenda, Notes, Action Items; confirm availability when creating a session.
 
 ## Next steps
 1. Confirm template field schema and any constraints.
+2. Communicate and document the auto-propagation behavior to program leads and stakeholders; add migration guidance and audit requirements.
 
 *End of draft*

@@ -5,14 +5,16 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
-const navLinks = [
+type NavLink = { href: string; label: string; external?: boolean };
+
+const navLinks: NavLink[] = [
   { href: "/admin", label: "Overview" },
   { href: "/admin/reports", label: "Reports" },
   { href: "/admin/settings", label: "Roles" },
   { href: "/admin/review", label: "Review Queue" },
   { href: "/admin/calendar", label: "Calendar" },
   { href: "http://localhost:5555", label: "Prisma Studio", external: true },
-] as const;
+];
 
 export function AdminNav() {
   const pathname = usePathname();

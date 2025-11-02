@@ -22,7 +22,7 @@ A repository maintainer or product manager wants to generate initial feature spe
 **Independent Test**: Run the batch generator with `prompts/processes_list.md` as input and confirm that a spec file is created for every process with the required sections filled and no implementation details leaked.
 
 **Acceptance Scenarios**:
-1. Given a non-empty `processes_list.md`, when the batch prompt is executed, then the system produces one spec file per process under `specs/1-batch-process-specs/` (or other agreed spec directory).
+1. Given a non-empty `processes_list.md`, when the batch prompt is executed, then the system produces one spec file per process under `specs/001-batch-process-specs/` (or other agreed spec directory).
 2. Given an existing spec for a specific process, when the batch generator runs, then the generator does not silently overwrite existing specs; it either creates a new numbered spec or reports conflicts for manual resolution.
 
 ---
@@ -91,7 +91,7 @@ An engineering lead or PM checks the companion checklist `checklists/requirement
 
 - The user running the generator is a repository maintainer with write access to the repo.
 - `prompts/processes_list.md` follows the same format as the current file in the repo (title and bullet sections per process).
-- Specs will be stored under `specs/1-batch-process-specs/` for this feature; numbering will be handled later by the `.specify` scripts if integrated.
+- Specs will be stored under `specs/001-batch-process-specs/` for this feature; numbering will be handled later by the `.specify` scripts if integrated.
 - The generator runs locally and writes files to the working tree (no remote branch operations performed by this draft).
 
 ## Implementation Notes (non-normative)
@@ -106,7 +106,7 @@ An engineering lead or PM checks the companion checklist `checklists/requirement
 
 ## Next steps
 
-1. Review the draft and confirm the spec directory naming convention (we used `specs/1-batch-process-specs/`).
+1. Review the draft and confirm the spec directory naming convention (we used `specs/001-batch-process-specs/`).
 2. If approved, run or implement the generator and create the per-process spec files.
 3. Run the Spec Quality checklist and iterate until all mandatory items pass.
 

@@ -38,7 +38,7 @@ type AdminUser = {
   id: string;
   name: string | null;
   email: string;
-  role: string;
+  role?: string;
   createdAt: string;
 };
 
@@ -83,7 +83,8 @@ async function getUsers(): Promise<AdminUser[]> {
       id: user.id,
       name: user.name,
       email: user.email,
-      role: user.role,
+      // Prisma User may not have `role` in the schema — default to 'member'
+      role: (user as any).role ?? 'member',
       createdAt: user.createdAt.toISOString(),
     }));
   } catch (error) {
