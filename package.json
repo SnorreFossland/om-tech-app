@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "create-user": "node scripts/createUser.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
