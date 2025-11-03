@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/auth/prisma";
+import { auth } from "@/auth/auth";
 
 async function resolveParams(params: any) {
     if (!params) return undefined;
@@ -30,6 +31,9 @@ export async function GET(request: Request, context: { params: any }) {
 
 export async function PUT(request: Request, context: { params: any }) {
     try {
+        const session = await auth();
+        if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
         const resolved = await resolveParams(context.params);
         const id = resolved?.id;
         if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
@@ -51,6 +55,15 @@ export async function PUT(request: Request, context: { params: any }) {
             }
         }
 
+        // Ownership check: only the creator may update
+        const existing = await prisma.template.findUnique({ where: { id } });
+        if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
+        const actorId = (session.user as any)?.id ?? null;
+        const actorEmail = (session.user as any)?.email ?? null;
+        if (existing.createdBy && existing.createdBy !== actorId && existing.createdBy !== actorEmail) {
+            return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        }
+
         const updated = await prisma.template.update({
             where: { id },
             data: {
@@ -58,6 +71,7 @@ export async function PUT(request: Request, context: { params: any }) {
                 ...(description !== undefined ? { description } : {}),
                 ...(schema !== undefined ? { schema } : {}),
                 version: { increment: 1 },
+                updatedBy: actorId ?? actorEmail ?? null,
             },
         });
 
@@ -70,9 +84,22 @@ export async function PUT(request: Request, context: { params: any }) {
 
 export async function DELETE(request: Request, context: { params: any }) {
     try {
+        const session = await auth();
+        if (!session) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
         const resolved = await resolveParams(context.params);
         const id = resolved?.id;
         if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+
+        // Ownership check: only the creator may delete
+        const existing = await prisma.template.findUnique({ where: { id } });
+        if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
+        const actorId = (session.user as any)?.id ?? null;
+        const actorEmail = (session.user as any)?.email ?? null;
+        if (existing.createdBy && existing.createdBy !== actorId && existing.createdBy !== actorEmail) {
+            return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+        }
+
         await prisma.template.delete({ where: { id } });
         return NextResponse.json({ ok: true });
     } catch (err) {

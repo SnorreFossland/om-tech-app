@@ -23,6 +23,7 @@ model Template {
   schema      Json
   version     Int      @default(1)
   createdBy   String?
+  updatedBy   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
