@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 import { cn } from "@/lib/utils";
 
 export const sidebarLinks = [
+  { href: "/properties", label: "Properties" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/overview", label: "Overview" },
   { href: "/features", label: "Features" },

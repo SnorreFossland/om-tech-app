@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import Panel from "./Panel";
+import Panel from "@/components/dashboard/Panel";
 
 function Gutter({ onPointerDown }: { onPointerDown: (e: React.PointerEvent) => void }) {
   return (

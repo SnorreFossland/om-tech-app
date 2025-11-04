@@ -1,0 +1,1198 @@
+openapi: 3.0.3
+info:
+  title: Property Sales Platform API
+  description: RESTful API for property browsing, listing management, AI-assisted inquiries, and user favorites
+  version: 1.0.0
+  contact:
+    name: Property Sales Platform
+    email: support@propertyplatform.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Development server
+  - url: https://propertyplatform.vercel.app/api
+    description: Production server
+
+tags:
+  - name: Properties
+    description: Property listing operations (browse, search, CRUD)
+  - name: Inquiries
+    description: Buyer inquiries and AI-assisted email generation
+  - name: Representatives
+    description: Representative dashboard and inquiry management
+  - name: Favorites
+    description: User favorite properties
+  - name: Users
+    description: User registration and profile management
+  - name: Auth
+    description: Authentication (handled by NextAuth.js)
+
+paths:
+  # ==================== PROPERTIES ====================
+  
+  /properties:
+    get:
+      tags: [Properties]
+      summary: Search and list properties
+      description: Get paginated list of properties with optional filtering
+      operationId: getProperties
+      parameters:
+        - name: city
+          in: query
+          schema:
+            type: string
+          description: Filter by city name
+        - name: propertyType
+          in: query
+          schema:
+            type: string
+            enum: [HOUSE, APARTMENT, CONDO, TOWNHOUSE]
+          description: Filter by property type
+        - name: minPrice
+          in: query
+          schema:
+            type: number
+          description: Minimum price filter
+        - name: maxPrice
+          in: query
+          schema:
+            type: number
+          description: Maximum price filter
+        - name: bedrooms
+          in: query
+          schema:
+            type: integer
+          description: Filter by number of bedrooms
+        - name: bathrooms
+          in: query
+          schema:
+            type: number
+          description: Filter by number of bathrooms
+        - name: minSquareFeet
+          in: query
+          schema:
+            type: integer
+          description: Minimum square footage
+        - name: maxSquareFeet
+          in: query
+          schema:
+            type: integer
+          description: Maximum square footage
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [ACTIVE, SOLD, PENDING, ARCHIVED]
+            default: ACTIVE
+          description: Filter by property status
+        - name: showSold
+          in: query
+          schema:
+            type: boolean
+            default: false
+          description: Include sold properties in results
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+          description: Page number for pagination
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            maximum: 100
+          description: Number of results per page
+        - name: sortBy
+          in: query
+          schema:
+            type: string
+            enum: [price_asc, price_desc, date_desc, date_asc]
+            default: date_desc
+          description: Sort order
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  properties:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PropertyListItem'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    post:
+      tags: [Properties]
+      summary: Create new property listing
+      description: Create a new property listing (seller only)
+      operationId: createProperty
+      security:
+        - sessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePropertyRequest'
+      responses:
+        '201':
+          description: Property created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /properties/{id}:
+    get:
+      tags: [Properties]
+      summary: Get property details
+      description: Get detailed information about a specific property
+      operationId: getPropertyById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Property ID
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PropertyDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    put:
+      tags: [Properties]
+      summary: Update property listing
+      description: Update an existing property listing (owner only)
+      operationId: updateProperty
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePropertyRequest'
+      responses:
+        '200':
+          description: Property updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Property'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    delete:
+      tags: [Properties]
+      summary: Delete property listing
+      description: Delete a property listing (owner only)
+      operationId: deleteProperty
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Property deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /properties/upload:
+    post:
+      tags: [Properties]
+      summary: Upload property images
+      description: Upload images to Vercel Blob storage for a property
+      operationId: uploadPropertyImages
+      security:
+        - sessionAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  maxItems: 20
+                propertyId:
+                  type: string
+      responses:
+        '200':
+          description: Images uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  photos:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PropertyPhoto'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '413':
+          description: File too large (max 10MB per image)
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  # ==================== INQUIRIES ====================
+  
+  /inquiries:
+    post:
+      tags: [Inquiries]
+      summary: Submit property inquiry
+      description: Submit an inquiry for a property (triggers AI email generation)
+      operationId: createInquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInquiryRequest'
+      responses:
+        '201':
+          description: Inquiry submitted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inquiry:
+                    $ref: '#/components/schemas/Inquiry'
+                  message:
+                    type: string
+                    example: "Your inquiry has been submitted and will be reviewed by our team."
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '404':
+          description: Property not found
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    get:
+      tags: [Representatives]
+      summary: List inquiries (representative only)
+      description: Get list of inquiries assigned to the authenticated representative
+      operationId: getInquiries
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [PENDING_AI_PROCESSING, DRAFT_READY, APPROVED, CONTACTED_OWNER, RESPONDED_TO_BUYER, CLOSED, REJECTED]
+          description: Filter by inquiry status
+        - name: propertyId
+          in: query
+          schema:
+            type: string
+          description: Filter by property ID
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inquiries:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/InquiryWithDraft'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /inquiries/{id}:
+    get:
+      tags: [Representatives]
+      summary: Get inquiry details
+      description: Get detailed inquiry information with AI-generated email draft
+      operationId: getInquiryById
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InquiryDetail'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /inquiries/{id}/approve:
+    post:
+      tags: [Representatives]
+      summary: Approve AI-generated email
+      description: Approve the AI-generated email draft and send to property owner
+      operationId: approveInquiry
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                editedContent:
+                  type: string
+                  description: Optional edited email content (if representative made changes)
+      responses:
+        '200':
+          description: Email approved and sent successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inquiry:
+                    $ref: '#/components/schemas/Inquiry'
+                  emailSent:
+                    type: boolean
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /inquiries/{id}/reject:
+    post:
+      tags: [Representatives]
+      summary: Reject AI-generated email
+      description: Reject the AI-generated email draft
+      operationId: rejectInquiry
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  description: Optional reason for rejection
+      responses:
+        '200':
+          description: Email draft rejected
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  inquiry:
+                    $ref: '#/components/schemas/Inquiry'
+                  message:
+                    type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /inquiries/{id}/regenerate:
+    post:
+      tags: [Representatives]
+      summary: Regenerate AI email draft
+      description: Request AI to regenerate the email draft with new parameters
+      operationId: regenerateInquiryDraft
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                instructions:
+                  type: string
+                  description: Optional instructions for regeneration (e.g., "make it more formal")
+      responses:
+        '200':
+          description: New draft generated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AIEmailDraft'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  # ==================== FAVORITES ====================
+  
+  /favorites:
+    get:
+      tags: [Favorites]
+      summary: Get user's favorite properties
+      description: Get list of properties favorited by authenticated user
+      operationId: getFavorites
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  favorites:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/FavoriteWithProperty'
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    post:
+      tags: [Favorites]
+      summary: Add property to favorites
+      description: Add a property to authenticated user's favorites
+      operationId: addFavorite
+      security:
+        - sessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - propertyId
+              properties:
+                propertyId:
+                  type: string
+      responses:
+        '201':
+          description: Property added to favorites
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorite'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Property not found
+        '409':
+          description: Property already in favorites
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /favorites/{id}:
+    delete:
+      tags: [Favorites]
+      summary: Remove property from favorites
+      description: Remove a property from authenticated user's favorites
+      operationId: removeFavorite
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Favorite ID (not property ID)
+      responses:
+        '204':
+          description: Property removed from favorites
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  # ==================== USERS ====================
+  
+  /users:
+    post:
+      tags: [Users]
+      summary: Register new user
+      description: Create a new user account
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUserRequest'
+      responses:
+        '201':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '409':
+          description: Email already exists
+        '500':
+          $ref: '#/components/responses/InternalError'
+  
+  /users/{id}:
+    get:
+      tags: [Users]
+      summary: Get user profile
+      description: Get user profile information (own profile only)
+      operationId: getUserById
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+    
+    put:
+      tags: [Users]
+      summary: Update user profile
+      description: Update user profile information (own profile only)
+      operationId: updateUser
+      security:
+        - sessionAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUserRequest'
+      responses:
+        '200':
+          description: User updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalError'
+
+# ==================== COMPONENTS ====================
+
+components:
+  securitySchemes:
+    sessionAuth:
+      type: apiKey
+      in: cookie
+      name: next-auth.session-token
+      description: NextAuth.js session cookie
+  
+  schemas:
+    # Property Schemas
+    PropertyListItem:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        propertyType:
+          type: string
+          enum: [HOUSE, APARTMENT, CONDO, TOWNHOUSE]
+        price:
+          type: number
+        bedrooms:
+          type: integer
+        bathrooms:
+          type: number
+        squareFeet:
+          type: integer
+        status:
+          type: string
+          enum: [ACTIVE, SOLD, PENDING, ARCHIVED]
+        primaryPhoto:
+          type: object
+          properties:
+            url:
+              type: string
+            displayOrder:
+              type: integer
+        isFavorited:
+          type: boolean
+          description: True if authenticated user has favorited (only included when user is logged in)
+        createdAt:
+          type: string
+          format: date-time
+    
+    PropertyDetail:
+      allOf:
+        - $ref: '#/components/schemas/Property'
+        - type: object
+          properties:
+            photos:
+              type: array
+              items:
+                $ref: '#/components/schemas/PropertyPhoto'
+            owner:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+            representative:
+              type: object
+              properties:
+                name:
+                  type: string
+            isFavorited:
+              type: boolean
+    
+    Property:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        country:
+          type: string
+        propertyType:
+          type: string
+          enum: [HOUSE, APARTMENT, CONDO, TOWNHOUSE]
+        price:
+          type: number
+        bedrooms:
+          type: integer
+        bathrooms:
+          type: number
+        squareFeet:
+          type: integer
+        description:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [ACTIVE, SOLD, PENDING, ARCHIVED]
+        soldDate:
+          type: string
+          format: date-time
+          nullable: true
+        ownerId:
+          type: string
+        representativeId:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    
+    CreatePropertyRequest:
+      type: object
+      required:
+        - title
+        - address
+        - city
+        - state
+        - zipCode
+        - propertyType
+        - price
+        - bedrooms
+        - bathrooms
+        - squareFeet
+        - description
+      properties:
+        title:
+          type: string
+          minLength: 5
+          maxLength: 200
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zipCode:
+          type: string
+        country:
+          type: string
+          default: "USA"
+        propertyType:
+          type: string
+          enum: [HOUSE, APARTMENT, CONDO, TOWNHOUSE]
+        price:
+          type: number
+          minimum: 0
+        bedrooms:
+          type: integer
+          minimum: 0
+        bathrooms:
+          type: number
+          minimum: 0
+        squareFeet:
+          type: integer
+          minimum: 1
+        description:
+          type: string
+          minLength: 50
+        amenities:
+          type: array
+          items:
+            type: string
+    
+    UpdatePropertyRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        price:
+          type: number
+        description:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+          enum: [ACTIVE, SOLD, PENDING, ARCHIVED]
+    
+    PropertyPhoto:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        displayOrder:
+          type: integer
+        uploadedAt:
+          type: string
+          format: date-time
+    
+    # Inquiry Schemas
+    Inquiry:
+      type: object
+      properties:
+        id:
+          type: string
+        propertyId:
+          type: string
+        inquirerName:
+          type: string
+        inquirerEmail:
+          type: string
+        inquirerPhone:
+          type: string
+          nullable: true
+        message:
+          type: string
+        status:
+          type: string
+          enum: [PENDING_AI_PROCESSING, DRAFT_READY, APPROVED, CONTACTED_OWNER, RESPONDED_TO_BUYER, CLOSED, REJECTED]
+        representativeId:
+          type: string
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    
+    InquiryWithDraft:
+      allOf:
+        - $ref: '#/components/schemas/Inquiry'
+        - type: object
+          properties:
+            property:
+              type: object
+              properties:
+                title:
+                  type: string
+                address:
+                  type: string
+                price:
+                  type: number
+            aiEmailDraft:
+              $ref: '#/components/schemas/AIEmailDraft'
+    
+    InquiryDetail:
+      allOf:
+        - $ref: '#/components/schemas/Inquiry'
+        - type: object
+          properties:
+            property:
+              $ref: '#/components/schemas/Property'
+            aiEmailDraft:
+              $ref: '#/components/schemas/AIEmailDraft'
+    
+    CreateInquiryRequest:
+      type: object
+      required:
+        - propertyId
+        - inquirerName
+        - inquirerEmail
+        - message
+      properties:
+        propertyId:
+          type: string
+        inquirerName:
+          type: string
+        inquirerEmail:
+          type: string
+          format: email
+        inquirerPhone:
+          type: string
+        message:
+          type: string
+          minLength: 10
+    
+    AIEmailDraft:
+      type: object
+      properties:
+        id:
+          type: string
+        inquiryId:
+          type: string
+        draftContent:
+          type: string
+        editedContent:
+          type: string
+          nullable: true
+        detectedLanguage:
+          type: string
+        approvalStatus:
+          type: string
+          enum: [PENDING, APPROVED, REJECTED]
+        rejectionCount:
+          type: integer
+        generatedAt:
+          type: string
+          format: date-time
+        approvedAt:
+          type: string
+          format: date-time
+          nullable: true
+    
+    # Favorite Schemas
+    Favorite:
+      type: object
+      properties:
+        id:
+          type: string
+        userId:
+          type: string
+        propertyId:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    
+    FavoriteWithProperty:
+      allOf:
+        - $ref: '#/components/schemas/Favorite'
+        - type: object
+          properties:
+            property:
+              $ref: '#/components/schemas/PropertyListItem'
+    
+    # User Schemas
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+          nullable: true
+        phone:
+          type: string
+          nullable: true
+        role:
+          type: string
+          enum: [BUYER, SELLER, REPRESENTATIVE]
+        emailVerified:
+          type: string
+          format: date-time
+          nullable: true
+        createdAt:
+          type: string
+          format: date-time
+    
+    CreateUserRequest:
+      type: object
+      required:
+        - email
+        - password
+        - name
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        name:
+          type: string
+        phone:
+          type: string
+        role:
+          type: string
+          enum: [BUYER, SELLER]
+          default: BUYER
+    
+    UpdateUserRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        phone:
+          type: string
+    
+    # Pagination
+    Pagination:
+      type: object
+      properties:
+        page:
+          type: integer
+        limit:
+          type: integer
+        total:
+          type: integer
+        totalPages:
+          type: integer
+        hasNext:
+          type: boolean
+        hasPrev:
+          type: boolean
+    
+    # Error Schemas
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        details:
+          type: object
+  
+  responses:
+    BadRequest:
+      description: Bad request (validation error)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    Forbidden:
+      description: Insufficient permissions
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    
+    InternalError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
