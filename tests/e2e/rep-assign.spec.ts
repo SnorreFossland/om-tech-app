@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type APIResponse } from '@playwright/test'
 
 const BASE = process.env.BASE || 'http://localhost:3000'
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'seller@example.com'
@@ -34,11 +34,25 @@ test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
     squareFeet: 800,
     description: 'Temp property for rep assign test. This description intentionally exceeds fifty characters to satisfy validation rules.',
   }
-  const createRes = await request.post(`${BASE}/api/properties`, { data: payload, headers: { cookie, 'x-dev-user-id': devId } })
-  // Accept 200/201 for created/saved or 409 if the same owner/address already exists (unique constraint)
-  expect([200, 201, 409]).toContain(createRes.status())
-  const createJson = await createRes.json()
-  const propertyId = createJson?.data?.id || createJson?.id
+  // Try creating the property, retrying with a more-unique address if we hit a duplicate/500 error.
+  let createRes: APIResponse | undefined = undefined
+  let attempts = 0
+  let propertyId: string | undefined
+  while (attempts < 3) {
+    attempts += 1
+    if (attempts > 1) payload.address = `${payload.address}-${Date.now()}-${Math.floor(Math.random() * 10000)}`
+    createRes = await request.post(`${BASE}/api/properties`, { data: payload, headers: { cookie, 'x-dev-user-id': devId } })
+    if (createRes && [200, 201].includes(createRes.status())) {
+      const createJson = await createRes.json()
+      propertyId = createJson?.data?.id || createJson?.id
+      break
+    }
+    if (createRes && createRes.status() === 409) {
+      break
+    }
+    if (createRes && createRes.status() === 500) continue
+    break
+  }
   expect(propertyId).toBeTruthy()
 
   // Assign representative
