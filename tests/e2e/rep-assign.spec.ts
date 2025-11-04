@@ -35,7 +35,8 @@ test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
     description: 'Temp property for rep assign test. This description intentionally exceeds fifty characters to satisfy validation rules.',
   }
   const createRes = await request.post(`${BASE}/api/properties`, { data: payload, headers: { cookie, 'x-dev-user-id': devId } })
-  expect([200, 201]).toContain(createRes.status())
+  // Accept 200/201 for created/saved or 409 if the same owner/address already exists (unique constraint)
+  expect([200, 201, 409]).toContain(createRes.status())
   const createJson = await createRes.json()
   const propertyId = createJson?.data?.id || createJson?.id
   expect(propertyId).toBeTruthy()

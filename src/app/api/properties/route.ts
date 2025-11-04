@@ -117,26 +117,35 @@ export async function POST(req: Request) {
       amenities,
     } = parsed.data
 
-    const property = await prisma.property.create({
-      data: {
-        title,
-        address,
-        city,
-        state,
-        zipCode,
-        country,
-        propertyType,
-        price: Number(price),
-        bedrooms: Number(bedrooms || 0),
-        bathrooms: Number(bathrooms || 0),
-        squareFeet: Number(squareFeet || 0),
-        description: description || '',
-        amenities: amenities ? JSON.stringify(amenities) : undefined,
-        ownerId: dbUser.id,
-      },
-    })
+    try {
+      const property = await prisma.property.create({
+        data: {
+          title,
+          address,
+          city,
+          state,
+          zipCode,
+          country,
+          propertyType,
+          price: Number(price),
+          bedrooms: Number(bedrooms || 0),
+          bathrooms: Number(bathrooms || 0),
+          squareFeet: Number(squareFeet || 0),
+          description: description || '',
+          amenities: amenities ? JSON.stringify(amenities) : undefined,
+          ownerId: dbUser.id,
+        },
+      })
 
-    return NextResponse.json({ data: property })
+      return NextResponse.json({ data: property })
+    } catch (e: any) {
+      // Handle Prisma unique constraint error (duplicate property for same owner)
+      if (e?.code === 'P2002') {
+        console.warn('Duplicate property create detected', e.meta)
+        return new NextResponse(JSON.stringify({ error: 'Property already exists', fields: e.meta?.target || null }), { status: 409 })
+      }
+      throw e
+    }
   } catch (err) {
     console.error('POST /api/properties error', err)
     return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 })
