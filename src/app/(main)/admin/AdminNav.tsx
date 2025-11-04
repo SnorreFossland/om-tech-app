@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
-type NavLink = { href: string; label: string; external?: boolean };
+type NavLink = { href: string; label: string; external?: boolean }
 
 const navLinks: NavLink[] = [
   { href: "/admin", label: "Overview" },
@@ -14,7 +14,7 @@ const navLinks: NavLink[] = [
   { href: "/admin/review", label: "Review Queue" },
   { href: "/admin/calendar", label: "Calendar" },
   { href: "http://localhost:5555", label: "Prisma Studio", external: true },
-];
+]
 
 export function AdminNav() {
   const pathname = usePathname();
