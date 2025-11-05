@@ -1,0 +1,5322 @@
+[debug-test] TEST_DATABASE_URL=file:./test-dev.db
+[debug-test] Running prisma db push...
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "dev.db" at "file:./dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 63ms
+
+
+real	0m1.580s
+user	0m0.985s
+sys	0m0.330s
+[debug-test] Running prisma generate...
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 123ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+real	0m1.809s
+user	0m1.257s
+sys	0m0.365s
+[debug-test] Listing generated client dir...
+ls: node_modules/.prisma/client: No such file or directory
+[debug-test] Running single test (integration/templates.spec.ts)
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 /Users/snorrefossland/GitHub/om-tech-app
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 54ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 71ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.9s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +5ms
+prisma:client checkPlatformCaching:ciName undefined +13ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +465ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.create({
+  data: {
+    name: "itest-template",
+    description: "for tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw42k00000mhsl34675c08"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "itest-template",
+        "description": "for tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw42k00000mhsl34675c08"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlw42k30002mhsldnajfsj6"
+  },
+  data: {
+    description: "owner updated",
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlw42k00000mhsl34675c08"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw42k30002mhsldnajfsj6"
+      },
+      "data": {
+        "description": "owner updated",
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlw42k00000mhsl34675c08"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw42k30002mhsldnajfsj6"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw42k30002mhsldnajfsj6"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlw42k30002mhsldnajfsj6"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw42k30002mhsldnajfsj6"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw42k30002mhsldnajfsj6"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw42k30002mhsldnajfsj6"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "itest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "itest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:03:53
+   Duration  3.69s (transform 35ms, setup 2.91s, collect 55ms, tests 16ms, environment 0ms, prepare 59ms)
+
+[debug-test] Running full test:db script
+
+> om-tech-app@0.1.0 test:db /Users/snorrefossland/GitHub/om-tech-app
+> cross-env TEST_DATABASE_URL=file:./test-dev.db pnpm test
+
+
+> om-tech-app@0.1.0 test /Users/snorrefossland/GitHub/om-tech-app
+> vitest
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ DEV  v1.6.1 /Users/snorrefossland/GitHub/om-tech-app
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 101ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 104ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 173ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 184ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 96ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.4s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 94ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.6s
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 66ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 74ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.7s
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.8s
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +10ms
+prisma:client checkPlatformCaching:ciName undefined +26ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +1ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +193ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +1ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +9ms
+prisma:client checkPlatformCaching:ciName undefined +27ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +2ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +193ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +6ms
+prisma:client checkPlatformCaching:ciName undefined +12ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +398ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +2ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +10ms
+prisma:client prisma.user.create({
+  data: {
+    email: "session-owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "session-owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +8ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.create({
+  data: {
+    name: "sess-template",
+    description: "for session tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw47fv0000mhxjavur571z"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "sess-template",
+        "description": "for session tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw47fv0000mhxjavur571z"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +1ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.create({
+  data: {
+    name: "itest-template",
+    description: "for tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw47fv0001mhxjfmac3to9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "itest-template",
+        "description": "for tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw47fv0001mhxjfmac3to9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlw47g20005mhxj45gmry26"
+  },
+  data: {
+    description: "owner updated",
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlw47fv0001mhxjfmac3to9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw47g20005mhxj45gmry26"
+      },
+      "data": {
+        "description": "owner updated",
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlw47fv0001mhxjfmac3to9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw47g20005mhxj45gmry26"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw47g20005mhxj45gmry26"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlw47g20005mhxj45gmry26"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw47g20005mhxj45gmry26"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw47g20005mhxj45gmry26"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw47g20005mhxj45gmry26"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +14ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "apitest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "apitest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "itest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "itest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ❯ test/integration/templates-api.spec.ts  (1 test) 25ms
+ ✓ test/integration/templates.spec.ts  (1 test) 33ms
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client checkPlatformCaching:postinstall false +65ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw47fx0002mhxjvn47mw45"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw47fx0002mhxjvn47mw45"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +8ms
+prisma:client prisma.session.deleteMany({
+  where: {
+    title: {
+      contains: "Session:"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "title": {
+          "contains": "Session:"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "sess-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "sess-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+
+ ❯ test/integration/sessions.spec.ts  (1 test | 1 failed) 97ms
+   ❯ test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+     → expected 404 to be 201 // Object.is equality
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 51ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 51ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.3s
+
+stderr | test/integration/sessions-unauth.spec.ts > Sessions API unauthenticated > returns 401 when not authenticated
+prisma:client checkPlatformCaching:postinstall false +5ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+ ✓ test/integration/sessions-unauth.spec.ts  (1 test) 29ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 1 error:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:75:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯
+
+ FAIL  test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+PrismaClientKnownRequestError: 
+Invalid `prisma.user.create()` invocation in
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/templates-api.spec.ts:21:35
+
+  18 beforeAll(async () => {
+  19     if (!databaseUrl) return;
+  20     await prisma.user.deleteMany({ where: { email: { in: ['owner@example.test', 'other@example.test'] } } });
+→ 21     owner = await prisma.user.create(
+Unique constraint failed on the fields: (`email`)
+ ❯ ei.handleRequestError node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:228:13
+ ❯ ei.handleAndLogRequestError node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:174:12
+ ❯ ei.request node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/RequestHandler.ts:143:12
+ ❯ a node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client/src/runtime/getPrismaClient.ts:833:24
+ ❯ test/integration/templates-api.spec.ts:21:17
+     19|         if (!databaseUrl) return;
+     20|         await prisma.user.deleteMany({ where: { email: { in: ['owner@e…
+     21|         owner = await prisma.user.create({ data: { email: 'owner@examp…
+       |                 ^
+     22|         other = await prisma.user.create({ data: { email: 'other@examp…
+     23|     });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯
+Serialized Error: { code: 'P2002', meta: { modelName: 'User', target: [ 'email' ] }, clientVersion: '6.18.0', batchRequestIdx: undefined }
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+AssertionError: expected 404 to be 201 // Object.is equality
+
+- Expected
++ Received
+
+- 201
++ 404
+
+ ❯ test/integration/sessions.spec.ts:54:37
+     52|         const json = await res.json();
+     53| 
+     54|         expect((res as any).status).toBe(201);
+       |                                     ^
+     55|         expect(json).toBeTruthy();
+     56|         expect(json.templateSnapshot).toBeTruthy();
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯
+
+ Test Files  3 failed | 2 passed (5)
+      Tests  1 failed | 2 passed (4)
+   Start at  12:03:58
+   Duration  7.31s (transform 87ms, setup 20.87s, collect 219ms, tests 184ms, environment 0ms, prepare 727ms)
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+[3Jc
+ RERUN  test/integration/revert.spec.ts x1
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 89ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 57ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 3.4s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 2 errors:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:77:9: ERROR: The symbol "prisma" has already been declared
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:80:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  12:06:54
+   Duration  3.39s
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+       rerun x1
+[2K[1A[2K[G[3Jc
+ RERUN  test/integration/templates-api.spec.ts x1
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 72ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 76ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.8s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +5ms
+prisma:client checkPlatformCaching:ciName undefined +11ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +16ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +16ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client checkPlatformCaching:postinstall false +38ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +30ms
+prisma:client prisma.template.create({
+  data: {
+    name: "apitest-template",
+    description: "api test",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw81cq0006mhxjxfs3vgla"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "apitest-template",
+        "description": "api test",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw81cq0006mhxjxfs3vgla"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw81ep0008mhxjaqa13tf9",
+    action: "create",
+    actor: "cmhlw81cq0006mhxjxfs3vgla",
+    meta: {
+      name: "apitest-template",
+      description: "api test",
+      snapshot: {
+        id: "cmhlw81ep0008mhxjaqa13tf9",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw81ep0008mhxjaqa13tf9",
+        "action": "create",
+        "actor": "cmhlw81cq0006mhxjxfs3vgla",
+        "meta": {
+          "name": "apitest-template",
+          "description": "api test",
+          "snapshot": {
+            "id": "cmhlw81ep0008mhxjaqa13tf9",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +15ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw81ep0008mhxjaqa13tf9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw81ep0008mhxjaqa13tf9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlw81ep0008mhxjaqa13tf9"
+  },
+  data: {
+    name: "apitest-template",
+    description: "owner updated",
+    schema: {
+      sections: []
+    },
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlw81cq0006mhxjxfs3vgla"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw81ep0008mhxjaqa13tf9"
+      },
+      "data": {
+        "name": "apitest-template",
+        "description": "owner updated",
+        "schema": {
+          "sections": []
+        },
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlw81cq0006mhxjxfs3vgla"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw81ep0008mhxjaqa13tf9",
+    action: "update",
+    actor: "cmhlw81cq0006mhxjxfs3vgla",
+    meta: {
+      changed: [
+        "name",
+        "description",
+        "schema"
+      ],
+      prevSnapshot: {
+        id: "cmhlw81ep0008mhxjaqa13tf9",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw81ep0008mhxjaqa13tf9",
+        "action": "update",
+        "actor": "cmhlw81cq0006mhxjxfs3vgla",
+        "meta": {
+          "changed": [
+            "name",
+            "description",
+            "schema"
+          ],
+          "prevSnapshot": {
+            "id": "cmhlw81ep0008mhxjaqa13tf9",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw81ep0008mhxjaqa13tf9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw81ep0008mhxjaqa13tf9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw81ep0008mhxjaqa13tf9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw81ep0008mhxjaqa13tf9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlw81ep0008mhxjaqa13tf9"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw81ep0008mhxjaqa13tf9"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw81ep0008mhxjaqa13tf9",
+    action: "delete",
+    actor: "cmhlw81cq0006mhxjxfs3vgla",
+    meta: {
+      name: "apitest-template"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw81ep0008mhxjaqa13tf9",
+        "action": "delete",
+        "actor": "cmhlw81cq0006mhxjxfs3vgla",
+        "meta": {
+          "name": "apitest-template"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "apitest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "apitest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates-api.spec.ts  (1 test) 115ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:06:58
+   Duration  2.97s
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+       rerun x1
+[2K[1A[2K[G[3Jc
+ RERUN  test/integration/sessions.spec.ts x1
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 58ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 71ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.8s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +4ms
+prisma:client checkPlatformCaching:ciName undefined +12ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +1ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.create({
+  data: {
+    email: "session-owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "session-owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.create({
+  data: {
+    name: "sess-template",
+    description: "for session tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw858n000cmhxjjkz3zsr1"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "sess-template",
+        "description": "for session tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw858n000cmhxjjkz3zsr1"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client checkPlatformCaching:postinstall false +16ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw858o000dmhxj335d5dzs"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw858o000dmhxj335d5dzs"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client Prisma Client call: +6ms
+prisma:client prisma.session.create({
+  data: {
+    title: "Session: from test",
+    templateId: "cmhlw858o000dmhxj335d5dzs",
+    templateSnapshot: {
+      id: "cmhlw858o000dmhxj335d5dzs",
+      name: "sess-template",
+      version: 1,
+      schema: {
+        sections: []
+      }
+    },
+    createdBy: "cmhlw858n000cmhxjjkz3zsr1"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "title": "Session: from test",
+        "templateId": "cmhlw858o000dmhxj335d5dzs",
+        "templateSnapshot": {
+          "id": "cmhlw858o000dmhxj335d5dzs",
+          "name": "sess-template",
+          "version": 1,
+          "schema": {
+            "sections": []
+          }
+        },
+        "createdBy": "cmhlw858n000cmhxjjkz3zsr1"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.session.deleteMany({
+  where: {
+    title: {
+      contains: "Session:"
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "title": {
+          "contains": "Session:"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "sess-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "sess-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/sessions.spec.ts  (1 test) 41ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:07:04
+   Duration  2.87s
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+       rerun x1
+[2K[1A[2K[G
+Restarting due to config changes...
+
+ DEV  v1.6.1 /Users/snorrefossland/GitHub/om-tech-app
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+
+The database is already in sync with the Prisma schema.
+
+The database is already in sync with the Prisma schema.
+
+
+The database is already in sync with the Prisma schema.
+
+
+Running generate... (Use --skip-generate to skip the generators)
+Running generate... (Use --skip-generate to skip the generators)
+Running generate... (Use --skip-generate to skip the generators)
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 136ms
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 135ms
+
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 143ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 170ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 237ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 210ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 6.4s
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 218ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 198ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 6.4s
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 6.5s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 6.5s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +18ms
+prisma:client checkPlatformCaching:ciName undefined +48ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +6ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +3ms
+prisma:client clientVersion 6.18.0 +20ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +34ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +12ms
+prisma:client checkPlatformCaching:ciName undefined +18ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +18ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +23ms
+prisma:client prisma.user.create({
+  data: {
+    email: "session-owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "session-owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +11ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +1ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.template.create({
+  data: {
+    name: "sess-template",
+    description: "for session tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw9p7r000fmhxj4uyhsqs5"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "sess-template",
+        "description": "for session tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw9p7r000fmhxj4uyhsqs5"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +15ms
+prisma:client checkPlatformCaching:ciName undefined +22ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +2ms
+prisma:client relativePath ../../../../../../prisma +1ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +14ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +2ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.create({
+  data: {
+    name: "itest-template",
+    description: "for tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw9p85000jmhxjvvwnjyj8"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "itest-template",
+        "description": "for tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw9p85000jmhxjvvwnjyj8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlw9p8c000lmhxjxh8jvc9h"
+  },
+  data: {
+    description: "owner updated",
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlw9p85000jmhxjvvwnjyj8"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9p8c000lmhxjxh8jvc9h"
+      },
+      "data": {
+        "description": "owner updated",
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlw9p85000jmhxjvvwnjyj8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9p8c000lmhxjxh8jvc9h"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9p8c000lmhxjxh8jvc9h"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlw9p8c000lmhxjxh8jvc9h"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9p8c000lmhxjxh8jvc9h"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9p8c000lmhxjxh8jvc9h"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9p8c000lmhxjxh8jvc9h"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "itest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "itest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates.spec.ts  (1 test) 31ms
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client checkPlatformCaching:postinstall false +46ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client checkPlatformCaching:postinstall false +48ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9p7w000hmhxjty51j1l6"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9p7w000hmhxjty51j1l6"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.session.create({
+  data: {
+    title: "Session: from test",
+    templateId: "cmhlw9p7w000hmhxjty51j1l6",
+    templateSnapshot: {
+      id: "cmhlw9p7w000hmhxjty51j1l6",
+      name: "sess-template",
+      version: 1,
+      schema: {
+        sections: []
+      }
+    },
+    createdBy: "cmhlw9p7r000fmhxj4uyhsqs5"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "title": "Session: from test",
+        "templateId": "cmhlw9p7w000hmhxjty51j1l6",
+        "templateSnapshot": {
+          "id": "cmhlw9p7w000hmhxjty51j1l6",
+          "name": "sess-template",
+          "version": 1,
+          "schema": {
+            "sections": []
+          }
+        },
+        "createdBy": "cmhlw9p7r000fmhxj4uyhsqs5"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.session.deleteMany({
+  where: {
+    title: {
+      contains: "Session:"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "title": {
+          "contains": "Session:"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "sess-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "sess-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/sessions.spec.ts  (1 test) 91ms
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +47ms
+prisma:client prisma.template.create({
+  data: {
+    name: "apitest-template",
+    description: "api test",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlw9p7u000gmhxjgcyejl1i"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "apitest-template",
+        "description": "api test",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlw9p7u000gmhxjgcyejl1i"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw9paj000nmhxjjtoc23e8",
+    action: "create",
+    actor: "cmhlw9p7u000gmhxjgcyejl1i",
+    meta: {
+      name: "apitest-template",
+      description: "api test",
+      snapshot: {
+        id: "cmhlw9paj000nmhxjjtoc23e8",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw9paj000nmhxjjtoc23e8",
+        "action": "create",
+        "actor": "cmhlw9p7u000gmhxjgcyejl1i",
+        "meta": {
+          "name": "apitest-template",
+          "description": "api test",
+          "snapshot": {
+            "id": "cmhlw9paj000nmhxjjtoc23e8",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +8ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9paj000nmhxjjtoc23e8"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9paj000nmhxjjtoc23e8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlw9paj000nmhxjjtoc23e8"
+  },
+  data: {
+    name: "apitest-template",
+    description: "owner updated",
+    schema: {
+      sections: []
+    },
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlw9p7u000gmhxjgcyejl1i"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9paj000nmhxjjtoc23e8"
+      },
+      "data": {
+        "name": "apitest-template",
+        "description": "owner updated",
+        "schema": {
+          "sections": []
+        },
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlw9p7u000gmhxjgcyejl1i"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw9paj000nmhxjjtoc23e8",
+    action: "update",
+    actor: "cmhlw9p7u000gmhxjgcyejl1i",
+    meta: {
+      changed: [
+        "name",
+        "description",
+        "schema"
+      ],
+      prevSnapshot: {
+        id: "cmhlw9paj000nmhxjjtoc23e8",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw9paj000nmhxjjtoc23e8",
+        "action": "update",
+        "actor": "cmhlw9p7u000gmhxjgcyejl1i",
+        "meta": {
+          "changed": [
+            "name",
+            "description",
+            "schema"
+          ],
+          "prevSnapshot": {
+            "id": "cmhlw9paj000nmhxjjtoc23e8",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9paj000nmhxjjtoc23e8"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9paj000nmhxjjtoc23e8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlw9paj000nmhxjjtoc23e8"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9paj000nmhxjjtoc23e8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlw9paj000nmhxjjtoc23e8"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlw9paj000nmhxjjtoc23e8"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlw9paj000nmhxjjtoc23e8",
+    action: "delete",
+    actor: "cmhlw9p7u000gmhxjgcyejl1i",
+    meta: {
+      name: "apitest-template"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlw9paj000nmhxjjtoc23e8",
+        "action": "delete",
+        "actor": "cmhlw9p7u000gmhxjgcyejl1i",
+        "meta": {
+          "name": "apitest-template"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "apitest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "apitest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates-api.spec.ts  (1 test) 140ms
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 72ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 57ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.7s
+
+stderr | test/integration/sessions-unauth.spec.ts > Sessions API unauthenticated > returns 401 when not authenticated
+prisma:client checkPlatformCaching:postinstall false +5ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+ ✓ test/integration/sessions-unauth.spec.ts  (1 test) 36ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 2 errors:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:77:9: ERROR: The symbol "prisma" has already been declared
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:80:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 4 passed (5)
+      Tests  4 passed (4)
+   Start at  12:08:12
+   Duration  9.87s (transform 0ms, setup 28.47s, collect 356ms, tests 298ms, environment 1ms, prepare 445ms)
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+[3Jc
+ RERUN  test/integration/templates-api.spec.ts
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 79ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 85ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 119ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 120ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Need your database queries to be 1000x faster? Accelerate offers you that and more: https://pris.ly/tip-2-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.3s
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 4.3s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +7ms
+prisma:client checkPlatformCaching:ciName undefined +16ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +1ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +24ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +18ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client checkPlatformCaching:postinstall false +41ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +30ms
+prisma:client prisma.template.create({
+  data: {
+    name: "apitest-template",
+    description: "api test",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlwo7bq000rmhxjwyuu8sma"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "apitest-template",
+        "description": "api test",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlwo7bq000rmhxjwyuu8sma"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwo7ds000tmhxjzjvnsfal",
+    action: "create",
+    actor: "cmhlwo7bq000rmhxjwyuu8sma",
+    meta: {
+      name: "apitest-template",
+      description: "api test",
+      snapshot: {
+        id: "cmhlwo7ds000tmhxjzjvnsfal",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwo7ds000tmhxjzjvnsfal",
+        "action": "create",
+        "actor": "cmhlwo7bq000rmhxjwyuu8sma",
+        "meta": {
+          "name": "apitest-template",
+          "description": "api test",
+          "snapshot": {
+            "id": "cmhlwo7ds000tmhxjzjvnsfal",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwo7ds000tmhxjzjvnsfal"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwo7ds000tmhxjzjvnsfal"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlwo7ds000tmhxjzjvnsfal"
+  },
+  data: {
+    name: "apitest-template",
+    description: "owner updated",
+    schema: {
+      sections: []
+    },
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlwo7bq000rmhxjwyuu8sma"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwo7ds000tmhxjzjvnsfal"
+      },
+      "data": {
+        "name": "apitest-template",
+        "description": "owner updated",
+        "schema": {
+          "sections": []
+        },
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlwo7bq000rmhxjwyuu8sma"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwo7ds000tmhxjzjvnsfal",
+    action: "update",
+    actor: "cmhlwo7bq000rmhxjwyuu8sma",
+    meta: {
+      changed: [
+        "name",
+        "description",
+        "schema"
+      ],
+      prevSnapshot: {
+        id: "cmhlwo7ds000tmhxjzjvnsfal",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwo7ds000tmhxjzjvnsfal",
+        "action": "update",
+        "actor": "cmhlwo7bq000rmhxjwyuu8sma",
+        "meta": {
+          "changed": [
+            "name",
+            "description",
+            "schema"
+          ],
+          "prevSnapshot": {
+            "id": "cmhlwo7ds000tmhxjzjvnsfal",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwo7ds000tmhxjzjvnsfal"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwo7ds000tmhxjzjvnsfal"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwo7ds000tmhxjzjvnsfal"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwo7ds000tmhxjzjvnsfal"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlwo7ds000tmhxjzjvnsfal"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwo7ds000tmhxjzjvnsfal"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwo7ds000tmhxjzjvnsfal",
+    action: "delete",
+    actor: "cmhlwo7bq000rmhxjwyuu8sma",
+    meta: {
+      name: "apitest-template"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwo7ds000tmhxjzjvnsfal",
+        "action": "delete",
+        "actor": "cmhlwo7bq000rmhxjwyuu8sma",
+        "meta": {
+          "name": "apitest-template"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "apitest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "apitest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +0ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+
+ ✓ test/integration/templates-api.spec.ts  (1 test) 110ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 1 error:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:75:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 passed (1)
+   Start at  12:19:31
+   Duration  8.78s
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+[3Jc
+ RERUN  test/integration/sessions.spec.ts x1
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 51ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 42ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 2.7s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +6ms
+prisma:client checkPlatformCaching:ciName undefined +13ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +6ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.user.create({
+  data: {
+    email: "session-owner@example.test",
+    password: "x"
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "session-owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.create({
+  data: {
+    name: "sess-template",
+    description: "for session tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlwockx000xmhxjah8c3c2m"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "sess-template",
+        "description": "for session tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlwockx000xmhxjah8c3c2m"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client checkPlatformCaching:postinstall false +20ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwocky000ymhxjz32w6xlm"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwocky000ymhxjz32w6xlm"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.session.create({
+  data: {
+    title: "Session: from test",
+    templateId: "cmhlwocky000ymhxjz32w6xlm",
+    templateSnapshot: {
+      id: "cmhlwocky000ymhxjz32w6xlm",
+      name: "sess-template",
+      version: 1,
+      schema: {
+        sections: []
+      }
+    },
+    createdBy: "cmhlwockx000xmhxjah8c3c2m"
+  }
+}) +0ms
+prisma:client Generated request: +1ms
+prisma:client {
+  "modelName": "Session",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "title": "Session: from test",
+        "templateId": "cmhlwocky000ymhxjz32w6xlm",
+        "templateSnapshot": {
+          "id": "cmhlwocky000ymhxjz32w6xlm",
+          "name": "sess-template",
+          "version": 1,
+          "schema": {
+            "sections": []
+          }
+        },
+        "createdBy": "cmhlwockx000xmhxjah8c3c2m"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.session.deleteMany({
+  where: {
+    title: {
+      contains: "Session:"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "title": {
+          "contains": "Session:"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "sess-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "sess-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/sessions.spec.ts  (1 test) 39ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  12:19:40
+   Duration  2.80s
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+       rerun x1
+[2K[1A[2K[G[3Jc
+ RERUN  test/integration/templates-api.spec.ts
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+
+The database is already in sync with the Prisma schema.
+Running generate... (Use --skip-generate to skip the generators)
+
+
+The database is already in sync with the Prisma schema.
+Running generate... (Use --skip-generate to skip the generators)
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 163ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 167ms
+
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 169ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Prisma schema loaded from prisma/schema.prisma
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 321ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 345ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 356ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 7.6s
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 7.7s
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 7.7s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +7ms
+prisma:client checkPlatformCaching:ciName undefined +20ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +11ms
+prisma:client checkPlatformCaching:ciName undefined +17ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +2ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +26ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +24ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +1ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +21ms
+prisma:client prisma.user.create({
+  data: {
+    email: "session-owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "session-owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +19ms
+prisma:client prisma.user.create({
+  data: {
+    email: "owner@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "owner@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.create({
+  data: {
+    name: "sess-template",
+    description: "for session tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlwqg8j0010mhxjd2qodosd"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "sess-template",
+        "description": "for session tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlwqg8j0010mhxjd2qodosd"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.create({
+  data: {
+    email: "other@example.test",
+    password: "x"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "email": "other@example.test",
+        "password": "x"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client checkPlatformCaching:postinstall false +44ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration) > creates a session with a template snapshot when authenticated
+prisma:client checkPlatformCaching:postinstall false +46ms
+prisma:client checkPlatformCaching:ciName undefined +0ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +1ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +0ms
+prisma:client Prisma Client call: +5ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwqg8m0012mhxjyjm2ys3c"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqg8m0012mhxjyjm2ys3c"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.session.create({
+  data: {
+    title: "Session: from test",
+    templateId: "cmhlwqg8m0012mhxjyjm2ys3c",
+    templateSnapshot: {
+      id: "cmhlwqg8m0012mhxjyjm2ys3c",
+      name: "sess-template",
+      version: 1,
+      schema: {
+        sections: []
+      }
+    },
+    createdBy: "cmhlwqg8j0010mhxjd2qodosd"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "title": "Session: from test",
+        "templateId": "cmhlwqg8m0012mhxjyjm2ys3c",
+        "templateSnapshot": {
+          "id": "cmhlwqg8m0012mhxjyjm2ys3c",
+          "name": "sess-template",
+          "version": 1,
+          "schema": {
+            "sections": []
+          }
+        },
+        "createdBy": "cmhlwqg8j0010mhxjd2qodosd"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/sessions.spec.ts > Sessions API (integration)
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.session.deleteMany({
+  where: {
+    title: {
+      contains: "Session:"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Session",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "title": {
+          "contains": "Session:"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "sess-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "sess-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "session-owner@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "session-owner@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/sessions.spec.ts  (1 test) 90ms
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +39ms
+prisma:client prisma.template.create({
+  data: {
+    name: "apitest-template",
+    description: "api test",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhlwqg8k0011mhxjphz3dm5a"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "apitest-template",
+        "description": "api test",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhlwqg8k0011mhxjphz3dm5a"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwqgay0015mhxjnjz91r9y",
+    action: "create",
+    actor: "cmhlwqg8k0011mhxjphz3dm5a",
+    meta: {
+      name: "apitest-template",
+      description: "api test",
+      snapshot: {
+        id: "cmhlwqgay0015mhxjnjz91r9y",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwqgay0015mhxjnjz91r9y",
+        "action": "create",
+        "actor": "cmhlwqg8k0011mhxjphz3dm5a",
+        "meta": {
+          "name": "apitest-template",
+          "description": "api test",
+          "snapshot": {
+            "id": "cmhlwqgay0015mhxjnjz91r9y",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +4ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwqgay0015mhxjnjz91r9y"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqgay0015mhxjnjz91r9y"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhlwqgay0015mhxjnjz91r9y"
+  },
+  data: {
+    name: "apitest-template",
+    description: "owner updated",
+    schema: {
+      sections: []
+    },
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhlwqg8k0011mhxjphz3dm5a"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqgay0015mhxjnjz91r9y"
+      },
+      "data": {
+        "name": "apitest-template",
+        "description": "owner updated",
+        "schema": {
+          "sections": []
+        },
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhlwqg8k0011mhxjphz3dm5a"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level) > allows owner to create, update and delete template via handlers and prevents other user
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwqgay0015mhxjnjz91r9y",
+    action: "update",
+    actor: "cmhlwqg8k0011mhxjphz3dm5a",
+    meta: {
+      changed: [
+        "name",
+        "description",
+        "schema"
+      ],
+      prevSnapshot: {
+        id: "cmhlwqgay0015mhxjnjz91r9y",
+        name: "apitest-template",
+        version: 1,
+        schema: {
+          sections: []
+        }
+      }
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwqgay0015mhxjnjz91r9y",
+        "action": "update",
+        "actor": "cmhlwqg8k0011mhxjphz3dm5a",
+        "meta": {
+          "changed": [
+            "name",
+            "description",
+            "schema"
+          ],
+          "prevSnapshot": {
+            "id": "cmhlwqgay0015mhxjnjz91r9y",
+            "name": "apitest-template",
+            "version": 1,
+            "schema": {
+              "sections": []
+            }
+          }
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwqgay0015mhxjnjz91r9y"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqgay0015mhxjnjz91r9y"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +1ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhlwqgay0015mhxjnjz91r9y"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqgay0015mhxjnjz91r9y"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhlwqgay0015mhxjnjz91r9y"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhlwqgay0015mhxjnjz91r9y"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.audit.create({
+  data: {
+    entity: "Template",
+    entityId: "cmhlwqgay0015mhxjnjz91r9y",
+    action: "delete",
+    actor: "cmhlwqg8k0011mhxjphz3dm5a",
+    meta: {
+      name: "apitest-template"
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Audit",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "entity": "Template",
+        "entityId": "cmhlwqgay0015mhxjnjz91r9y",
+        "action": "delete",
+        "actor": "cmhlwqg8k0011mhxjphz3dm5a",
+        "meta": {
+          "name": "apitest-template"
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "apitest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "apitest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates-api.spec.ts > Templates API (integration - handler level)
+prisma:client Prisma Client call: +1ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates-api.spec.ts  (1 test) 130ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 1 error:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:75:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  2 passed (2)
+   Start at  12:21:13
+   Duration  23.43s
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+[3Jc
+ RERUN  test/integration/revert.spec.ts x3
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18
+.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client 
+in 67ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 82ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:34:17)
+test/setup: finished preparing test DB in 3.9s
+
+ ❯ test/integration/revert.spec.ts  (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  test/integration/revert.spec.ts [ test/integration/revert.spec.ts ]
+Error: Transform failed with 1 error:
+/Users/snorrefossland/GitHub/om-tech-app/test/integration/revert.spec.ts:75:6: ERROR: The symbol "databaseUrl" has already been declared
+ ❯ failureErrorWithLog node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:1472:15
+ ❯ node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:755:50
+ ❯ responseCallbacks.<computed> node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:622:9
+ ❯ handleIncomingPacket node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:677:12
+ ❯ Socket.readFromStdout node_modules/.pnpm/esbuild@0.21.5/node_modules/esbuild/lib/main.js:600:7
+ ❯ Socket.emit node:events:507:28
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  13:38:19
+   Duration  3.95s
+
+
+ FAIL  Tests failed. Watching for file changes...
+       press h to show help, press q to quit
+       rerun x3
+[2K[1A[2K[G ELIFECYCLE  Test failed. See above for more details.
+ ELIFECYCLE  Command failed with exit code 1.

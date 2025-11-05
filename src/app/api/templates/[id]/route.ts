@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/auth/prisma";
 import { auth } from "@/auth/auth";
+import { z } from "zod";
+
+const updateTemplateSchema = z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    schema: z.any().optional(),
+});
 
 async function resolveParams(params: any) {
     if (!params) return undefined;
@@ -55,6 +62,11 @@ export async function PUT(request: Request, context: { params: any }) {
             }
         }
 
+        // Validate incoming payload
+        const parsed = updateTemplateSchema.safeParse({ name, description, schema });
+        if (!parsed.success) return NextResponse.json({ error: 'Invalid payload', details: parsed.error.format() }, { status: 400 });
+        const validated = parsed.data;
+
         // Ownership check: only the creator may update
         const existing = await prisma.template.findUnique({ where: { id } });
         if (!existing) return NextResponse.json({ error: "Not found" }, { status: 404 });
@@ -64,16 +76,26 @@ export async function PUT(request: Request, context: { params: any }) {
             return NextResponse.json({ error: "Forbidden" }, { status: 403 });
         }
 
+        // keep a copy of the previous snapshot for history/revert
+        const prevSnapshot = { id: existing.id, name: existing.name, version: existing.version, schema: existing.schema };
+
         const updated = await prisma.template.update({
             where: { id },
             data: {
-                ...(name !== undefined ? { name } : {}),
-                ...(description !== undefined ? { description } : {}),
-                ...(schema !== undefined ? { schema } : {}),
+                ...(validated.name !== undefined ? { name: validated.name } : {}),
+                ...(validated.description !== undefined ? { description: validated.description } : {}),
+                ...(validated.schema !== undefined ? { schema: validated.schema } : {}),
                 version: { increment: 1 },
                 updatedBy: actorId ?? actorEmail ?? null,
             },
         });
+
+        // Audit entry with prev snapshot
+        try {
+            await prisma.audit.create({ data: { entity: 'Template', entityId: updated.id, action: 'update', actor: actorId ?? actorEmail ?? null, meta: { changed: Object.keys(parsed.success ? parsed.data : {}), prevSnapshot } } });
+        } catch (e) {
+            console.warn('Failed to write audit record for template update', e);
+        }
 
         return NextResponse.json(updated);
     } catch (err) {
@@ -100,7 +122,14 @@ export async function DELETE(request: Request, context: { params: any }) {
             return NextResponse.json({ error: "Forbidden" }, { status: 403 });
         }
 
-        await prisma.template.delete({ where: { id } });
+        const deleted = await prisma.template.delete({ where: { id } });
+
+        try {
+            await prisma.audit.create({ data: { entity: 'Template', entityId: deleted.id, action: 'delete', actor: actorId ?? actorEmail ?? null, meta: { name: deleted.name } } });
+        } catch (e) {
+            console.warn('Failed to write audit record for template delete', e);
+        }
+
         return NextResponse.json({ ok: true });
     } catch (err) {
         console.error(err);

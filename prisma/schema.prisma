@@ -1,5 +1,8 @@
 generator client {
   provider = "prisma-client-js"
+  // Ensure Prisma generates a native binary for the current machine architecture.
+  // This helps avoid mismatched/Corrupted engine binaries on macOS (arm64 / Intel).
+  binaryTargets = ["native"]
 }
 
 datasource db {
@@ -23,7 +26,27 @@ model Template {
   schema      Json
   version     Int      @default(1)
   createdBy   String?
-  updatedBy   String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  updatedBy   String?
+}
+
+model Session {
+  id              String   @id @default(cuid())
+  title           String?
+  templateId      String?
+  templateSnapshot Json?
+  createdBy       String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Audit {
+  id        String   @id @default(cuid())
+  entity    String
+  entityId  String
+  action    String
+  actor     String?
+  meta      Json?
+  createdAt DateTime @default(now())
 }

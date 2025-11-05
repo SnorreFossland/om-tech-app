@@ -9,7 +9,7 @@
 
 ### User Story 1 - Run plenum and facilitate iteration (Priority: P1)
 
-A group lead runs the plenum, collects iteration artifacts, and guides the group through the execution flow.
+A group process lead runs the plenum, collects iteration artifacts, and guides the group through the execution flow.
 
 **Why this priority**: This is the primary activity where collaboration occurs and artifacts are produced.
 

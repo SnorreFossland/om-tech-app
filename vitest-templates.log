@@ -1,0 +1,362 @@
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v1.6.1 /Users/snorrefossland/GitHub/om-tech-app
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": SQLite database "test-dev.db" at "file:./test-dev.db"
+
+The database is already in sync with the Prisma schema.
+
+Running generate... (Use --skip-generate to skip the generators)
+[2K[1A[2K[GRunning generate... - Prisma Client
+[2K[1A[2K[G✔ Generated Prisma Client (v6.18.0, engine=binary) to 
+./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__types
+cript@5.9.3/node_modules/@prisma/client in 74ms
+
+npm warn Unknown env config "verify-deps-before-run". This will stop working in the next major version of npm.
+npm warn Unknown env config "global-bin-dir". This will stop working in the next major version of npm.
+npm warn Unknown env config "_jsr-registry". This will stop working in the next major version of npm.
+npm warn Unknown env config "store-dir". This will stop working in the next major version of npm.
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+
+✔ Generated Prisma Client (v6.18.0, engine=binary) to ./node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/client in 63ms
+
+Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+
+Tip: Interested in query caching in just a few lines of code? Try Accelerate today! https://pris.ly/tip-3-accelerate
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:16:17)
+test/setup: ensuring Prisma schema is pushed to file:./test-dev.db
+
+stdout | prepareTestDatabase (/Users/snorrefossland/GitHub/om-tech-app/test/setup.ts:36:17)
+test/setup: finished preparing test DB in 4.1s
+
+stderr | log (/Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/@prisma/debug/src/index.ts:65:55)
+prisma:client checkPlatformCaching:postinstall false +6ms
+prisma:client checkPlatformCaching:ciName undefined +30ms
+prisma:client dirname /Users/snorrefossland/GitHub/om-tech-app/node_modules/.pnpm/@prisma+client@6.18.0_prisma@6.18.0_typescript@5.9.3__typescript@5.9.3/node_modules/.prisma/client +0ms
+prisma:client relativePath ../../../../../../prisma +0ms
+prisma:client cwd /Users/snorrefossland/GitHub/om-tech-app/prisma +0ms
+prisma:client clientVersion 6.18.0 +1ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +1ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +749ms
+prisma:client prisma.user.upsert({
+  where: {
+    email: "owner@example.test"
+  },
+  create: {
+    email: "owner@example.test",
+    password: "x"
+  },
+  update: {}
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "upsertOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": "owner@example.test"
+      },
+      "create": {
+        "email": "owner@example.test",
+        "password": "x"
+      },
+      "update": {}
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.user.upsert({
+  where: {
+    email: "other@example.test"
+  },
+  create: {
+    email: "other@example.test",
+    password: "x"
+  },
+  update: {}
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "upsertOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": "other@example.test"
+      },
+      "create": {
+        "email": "other@example.test",
+        "password": "x"
+      },
+      "update": {}
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.create({
+  data: {
+    name: "itest-template",
+    description: "for tests",
+    schema: {
+      sections: []
+    },
+    createdBy: "cmhmk126q0000mhqzz7c962vq"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "createOne",
+  "query": {
+    "arguments": {
+      "data": {
+        "name": "itest-template",
+        "description": "for tests",
+        "schema": {
+          "sections": []
+        },
+        "createdBy": "cmhmk126q0000mhqzz7c962vq"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.update({
+  where: {
+    id: "cmhmk126v0002mhqzwitv11d5"
+  },
+  data: {
+    description: "owner updated",
+    version: {
+      increment: 1
+    },
+    updatedBy: "cmhmk126q0000mhqzz7c962vq"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "updateOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhmk126v0002mhqzwitv11d5"
+      },
+      "data": {
+        "description": "owner updated",
+        "version": {
+          "increment": 1
+        },
+        "updatedBy": "cmhmk126q0000mhqzz7c962vq"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhmk126v0002mhqzwitv11d5"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhmk126v0002mhqzwitv11d5"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.delete({
+  where: {
+    id: "cmhmk126v0002mhqzwitv11d5"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteOne",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhmk126v0002mhqzwitv11d5"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.template.findUnique({
+  where: {
+    id: "cmhmk126v0002mhqzwitv11d5"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "findUnique",
+  "query": {
+    "arguments": {
+      "where": {
+        "id": "cmhmk126v0002mhqzwitv11d5"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+stderr | test/integration/templates.spec.ts > Template ownership (integration)
+prisma:client Prisma Client call: +3ms
+prisma:client prisma.template.deleteMany({
+  where: {
+    name: "itest-template"
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "Template",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "name": "itest-template"
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+prisma:client Prisma Client call: +2ms
+prisma:client prisma.user.deleteMany({
+  where: {
+    email: {
+      in: [
+        "owner@example.test",
+        "other@example.test"
+      ]
+    }
+  }
+}) +0ms
+prisma:client Generated request: +0ms
+prisma:client {
+  "modelName": "User",
+  "action": "deleteMany",
+  "query": {
+    "arguments": {
+      "where": {
+        "email": {
+          "in": [
+            "owner@example.test",
+            "other@example.test"
+          ]
+        }
+      }
+    },
+    "selection": {
+      "$composites": true,
+      "$scalars": true
+    }
+  }
+}
+ +0ms
+
+ ✓ test/integration/templates.spec.ts > Template ownership (integration) > owner can create and update/delete, other cannot
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  23:13:21
+   Duration  6.38s (transform 73ms, setup 4.18s, collect 76ms, tests 775ms, environment 0ms, prepare 161ms)
+

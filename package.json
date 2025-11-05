@@ -4,6 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "test": "vitest",
+    "test:db": "cross-env TEST_DATABASE_URL=file:./test-dev.db pnpm exec vitest run",
+    "debug:test": "bash scripts/debug-test.sh",
+    "test:watch": "vitest --watch",
     "create-user": "node scripts/createUser.js",
     "build": "next build",
     "start": "next start",
@@ -44,8 +48,10 @@
     "eslint-config-next": "16.0.1",
     "postcss": "8.4.49",
     "prisma": "6.18.0",
+    "cross-env": "7.0.3",
     "tailwindcss": "3.4.17",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^1.0.0"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
 }

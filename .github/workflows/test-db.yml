@@ -1,0 +1,47 @@
+name: Test (with test DB)
+
+on:
+  pull_request:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      TEST_DATABASE_URL: file:./test-dev.db
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Enable corepack and prepare pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Make debug script executable
+        run: chmod +x scripts/debug-test.sh || true
+
+      - name: Prepare test DB (prisma db push + generate)
+        run: |
+          npx prisma db push --schema=prisma/schema.prisma
+          npx prisma generate
+
+      - name: Run tests (test:db)
+        run: pnpm run test:db

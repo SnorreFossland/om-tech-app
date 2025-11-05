@@ -228,7 +228,10 @@
 }
 
 @layer base {
-  *, ::before, ::after {
+
+  *,
+  ::before,
+  ::after {
     box-sizing: border-box;
   }
 
@@ -246,4 +249,86 @@
   background-color: hsl(var(--primary));
   color: hsl(var(--primary-foreground));
   padding: 1rem;
+}
+
+/* Sonner toast theme fixes — cover several possible class/attribute names so styles apply
+   in case the library class names differ across versions. Ensure dark mode toasts use
+   the app's card/background variables and readable foreground color. */
+/* Broad Sonner toast dark-mode overrides: target common classnames and attributes
+   across Sonner versions and portals. Use !important to override inline styles. */
+html.dark [data-sonner-root],
+html.dark [data-sonner],
+html.dark .sonner,
+html.dark .sonner-root,
+html.dark .snr-toast,
+html.dark .snr-container,
+html.dark .snr,
+html.dark .snr-root,
+html.dark .snackbar,
+html.dark .toast,
+html.dark .toast-root,
+html.dark [data-toast],
+html.dark [data-snr-toast],
+html.dark [data-sonner-root] *,
+html.dark [data-sonner] * {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* also cover body.dark and attribute-based theme markers */
+.dark [data-sonner-root],
+.dark [data-sonner],
+.dark .sonner,
+.dark .sonner-root,
+.dark .snr-toast,
+.dark .snr-container,
+.dark .snr,
+.dark .snr-root,
+.dark .snackbar,
+.dark .toast,
+.dark .toast-root,
+.dark [data-toast],
+.dark [data-snr-toast],
+.dark [data-sonner-root] *,
+.dark [data-sonner] * {
+  background-color: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* System dark preference fallback */
+@media (prefers-color-scheme: dark) {
+
+  [data-sonner-root],
+  [data-sonner],
+  .sonner,
+  .sonner-root,
+  .snr-toast,
+  .snr-container,
+  .snr,
+  .snr-root,
+  .snackbar,
+  .toast,
+  .toast-root,
+  [data-toast],
+  [data-snr-toast],
+  [data-sonner-root] *,
+  [data-sonner] * {
+    background-color: hsl(var(--card)) !important;
+    color: hsl(var(--card-foreground)) !important;
+    border-color: rgba(255, 255, 255, 0.06) !important;
+  }
+}
+
+/* Ensure buttons/links inside toasts are also visible in dark mode */
+html.dark .sonner a,
+html.dark .sonner button,
+.dark .sonner a,
+.dark .sonner button,
+html.dark [data-sonner] a,
+.dark [data-sonner] a,
+html.dark [data-sonner] button,
+.dark [data-sonner] button {
+  color: hsl(var(--card-foreground)) !important;
 }
