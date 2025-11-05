@@ -1,0 +1,27 @@
+
+Running 2 tests using 2 workers
+
+mint set-cookie header: {
+  vary: [32m'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch'[39m,
+  [32m'content-type'[39m: [32m'application/json'[39m,
+  [32m'set-cookie'[39m: [32m'dev-user-id=cmhlsgvno0000qsc0oagqy4tv; Path=/; Max-Age=3600; HttpOnly; SameSite=Lax'[39m,
+  [32m'x-dev-user-id'[39m: [32m'cmhlsgvno0000qsc0oagqy4tv'[39m,
+  date: [32m'Wed, 05 Nov 2025 09:41:44 GMT'[39m,
+  connection: [32m'keep-alive'[39m,
+  [32m'keep-alive'[39m: [32m'timeout=5'[39m,
+  [32m'transfer-encoding'[39m: [32m'chunked'[39m
+}
+mint set-cookie header: {
+  vary: [32m'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch'[39m,
+  [32m'content-type'[39m: [32m'application/json'[39m,
+  [32m'set-cookie'[39m: [32m'dev-user-id=cmhlsgvno0000qsc0oagqy4tv; Path=/; Max-Age=3600; HttpOnly; SameSite=Lax'[39m,
+  [32m'x-dev-user-id'[39m: [32m'cmhlsgvno0000qsc0oagqy4tv'[39m,
+  date: [32m'Wed, 05 Nov 2025 09:41:44 GMT'[39m,
+  connection: [32m'keep-alive'[39m,
+  [32m'keep-alive'[39m: [32m'timeout=5'[39m,
+  [32m'transfer-encoding'[39m: [32m'chunked'[39m
+}
+  ✓  1 [chromium] › tests/e2e/rep-assign.spec.ts:7:5 › rep assign/unassign via dev mint endpoint (647ms)
+  ✓  2 [chromium] › tests/e2e/create-property-and-assign.spec.ts:7:5 › create property then assign/unassign representative (dev mint) (633ms)
+
+  2 passed (4.1s)

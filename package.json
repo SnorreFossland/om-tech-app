@@ -60,6 +60,7 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
+    "test:e2e:ci": "BASE=http://127.0.0.1:3000 npx playwright test --workers=1",
     "test:e2e:headed": "playwright test --headed",
     "test:cleanup": "node scripts/cleanup-test-data.js"
   },
