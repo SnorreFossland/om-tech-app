@@ -117,13 +117,16 @@ export async function POST(req: Request) {
       amenities,
     } = parsed.data
 
-    // Idempotency: if a property with the same address already exists for this owner, return it
+    // Use an atomic upsert keyed by the composite unique (address, ownerId).
+    // We named the composite unique `address_ownerId` in schema.prisma so we can target it here.
     try {
-      const preexisting = await prisma.property.findFirst({ where: { address, ownerId: dbUser.id } })
-      if (preexisting) return NextResponse.json({ data: preexisting })
+      const where = { address_ownerId: { address, ownerId: dbUser.id } }
 
-      const property = await prisma.property.create({
-        data: {
+      // Use upsert: if it exists, do a no-op update (just return it). If not, create.
+      const property = await prisma.property.upsert({
+        where,
+        update: {},
+        create: {
           title,
           address,
           city,
@@ -142,22 +145,30 @@ export async function POST(req: Request) {
       })
 
       return NextResponse.json({ data: property })
-    } catch (e: any) {
-      // Handle Prisma unique constraint error (duplicate property for same owner)
-      if (e?.code === 'P2002') {
-        console.warn('Duplicate property create detected', e.meta)
-        console.warn('P2002 debug:', { code: e?.code, ownerId: dbUser?.id, address })
+    } catch (e: unknown) {
+      // Extra debug logging for unexpected errors
+      const err = e as { message?: string; code?: string; meta?: unknown }
+      console.error('POST /api/properties upsert error', {
+        message: err?.message,
+        code: err?.code,
+        meta: err?.meta,
+        address,
+        ownerId: dbUser?.id,
+        headers: {
+          'x-dev-user-id': req.headers.get('x-dev-user-id'),
+        },
+      })
+
+      // Fall back to previous P2002 handling in case upsert is not supported or fails
+      if (err?.code === 'P2002') {
+        console.warn('P2002 during upsert (duplicate), attempting to lookup existing record', err?.meta)
         try {
-          // attempt to return the existing property (idempotent create)
           const existing = await prisma.property.findFirst({ where: { address, ownerId: dbUser.id } })
-          if (existing) {
-            return NextResponse.json({ data: existing })
-          }
+          if (existing) return NextResponse.json({ data: existing })
         } catch (inner) {
-          console.warn('Error finding existing property after P2002', inner)
+          console.warn('Error finding existing property after upsert P2002', inner)
         }
-        // Fall back to 409 if we couldn't locate the existing record
-        return new NextResponse(JSON.stringify({ error: 'Property already exists', fields: e.meta?.target || null }), { status: 409 })
+  return new NextResponse(JSON.stringify({ error: 'Property already exists', fields: (err.meta as any)?.target || null }), { status: 409 })
       }
       throw e
     }

@@ -113,7 +113,7 @@ model Property {
   @@index([ownerId])
   @@index([representativeId])
   @@index([city, propertyType, status])
-  @@unique([address, ownerId])
+  @@unique([address, ownerId], name: "address_ownerId")
 }
 
 
