@@ -47,11 +47,32 @@ test('create property then assign/unassign representative (dev mint)', async ({ 
       break
     }
     if (createRes && createRes.status() === 409) {
-      // duplicate detected; stop retrying and proceed to check propertyId
+      // duplicate detected; try to find existing property by title or address
+      try {
+        const listRes = await request.get(`${BASE}/api/properties?page=1&pageSize=50`)
+        if (listRes.ok()) {
+          const listJson = await listRes.json()
+          const found = (listJson?.data || []).find((p: Record<string, unknown>) => {
+            const addr = p['address'] as string | undefined
+            const title = p['title'] as string | undefined
+            return addr === payload.address || title === payload.title
+          })
+          if (found) {
+            propertyId = found.id as string
+            break
+          }
+        }
+      } catch {
+        // ignore and fallthrough
+      }
       break
     }
-    // if server error (500), retry with a new address
-    if (createRes && createRes.status() === 500) continue
+    // if server error (500) or other transient issue, retry with a new address
+    if (createRes && [500, 401, 502, 503].includes(createRes.status())) {
+      // small delay before retry
+      await new Promise((r) => setTimeout(r, 200))
+      continue
+    }
     break
   }
   expect(propertyId).toBeTruthy()

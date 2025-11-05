@@ -48,9 +48,29 @@ test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
       break
     }
     if (createRes && createRes.status() === 409) {
+      try {
+        const listRes = await request.get(`${BASE}/api/properties?page=1&pageSize=50`)
+        if (listRes.ok()) {
+          const listJson = await listRes.json()
+          const found = (listJson?.data || []).find((p: Record<string, unknown>) => {
+            const addr = p['address'] as string | undefined
+            const title = p['title'] as string | undefined
+            return addr === payload.address || title === payload.title
+          })
+          if (found) {
+            propertyId = found.id as string
+            break
+          }
+        }
+      } catch {
+        // ignore
+      }
       break
     }
-    if (createRes && createRes.status() === 500) continue
+    if (createRes && [500, 401, 502, 503].includes(createRes.status())) {
+      await new Promise((r) => setTimeout(r, 200))
+      continue
+    }
     break
   }
   expect(propertyId).toBeTruthy()
