@@ -10,13 +10,234 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum UserRole {
+  BUYER
+  SELLER
+  REPRESENTATIVE
+}
+
+enum PropertyType {
+  HOUSE
+  APARTMENT
+  CONDO
+  TOWNHOUSE
+}
+
+enum PropertyStatus {
+  ACTIVE
+  SOLD
+  PENDING
+  ARCHIVED
+}
+
+enum InquiryStatus {
+  PENDING_AI_PROCESSING
+  DRAFT_READY
+  APPROVED
+  CONTACTED_OWNER
+  RESPONDED_TO_BUYER
+  CLOSED
+  REJECTED
+}
+
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ViewingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
 model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                      String                      @id @default(cuid())
+  email                   String                      @unique
+  name                    String?
+  password                String
+  phone                   String?
+  role                    UserRole                    @default(BUYER)
+  emailVerified           DateTime?
+  createdAt               DateTime                    @default(now())
+  updatedAt               DateTime                    @updatedAt
+  
+  // Relationships
+  properties              Property[]                  @relation("PropertyOwner")
+  representativeProperties Property[]                 @relation("PropertyRepresentative")
+  favorites               Favorite[]
+  inquiriesManaged        Inquiry[]                   @relation("InquiryRepresentative")
+  assignedProperties      RepresentativeAssignment[]
+  approvedDrafts          AIEmailDraft[]              @relation("DraftApprover")
+  viewingRequests         ViewingRequest[]            @relation("ViewingRepresentative")
+
+  @@index([role])
+}
+
+model Property {
+  id                        String                      @id @default(cuid())
+  title                     String
+  address                   String
+  city                      String
+  state                     String
+  zipCode                   String
+  country                   String                      @default("USA")
+  propertyType              PropertyType
+  price                     Float
+  bedrooms                  Int
+  bathrooms                 Float
+  squareFeet                Int
+  description               String
+  amenities                 String?                     // JSON array stored as string
+  status                    PropertyStatus              @default(ACTIVE)
+  soldDate                  DateTime?
+  archiveDate               DateTime?
+  keepVisibleAfterArchive   Boolean                     @default(false)
+  ownerId                   String
+  representativeId          String?
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  
+  // Relationships
+  owner                     User                        @relation("PropertyOwner", fields: [ownerId], references: [id], onDelete: Cascade)
+  representative            User?                       @relation("PropertyRepresentative", fields: [representativeId], references: [id])
+  photos                    PropertyPhoto[]
+  inquiries                 Inquiry[]
+  viewingRequests           ViewingRequest[]
+  favorites                 Favorite[]
+  assignment                RepresentativeAssignment?
+
+  @@index([city])
+  @@index([propertyType])
+  @@index([price])
+  @@index([status])
+  @@index([ownerId])
+  @@index([representativeId])
+  @@index([city, propertyType, status])
+  @@unique([address, ownerId])
+}
+
+
+
+model PropertyPhoto {
+  id            String      @id @default(cuid())
+  propertyId    String
+  url           String
+  blobKey       String
+  displayOrder  Int         @default(0)
+  uploadedAt    DateTime    @default(now())
+  
+  // Relationships
+  property      Property    @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@index([propertyId])
+  @@index([propertyId, displayOrder])
+}
+
+model Inquiry {
+  id              String          @id @default(cuid())
+  propertyId      String
+  inquirerName    String
+  inquirerEmail   String
+  inquirerPhone   String?
+  message         String
+  status          InquiryStatus   @default(PENDING_AI_PROCESSING)
+  representativeId String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  
+  // Relationships
+  property        Property        @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  representative  User?           @relation("InquiryRepresentative", fields: [representativeId], references: [id])
+  aiEmailDraft    AIEmailDraft?
+  viewingRequest  ViewingRequest?
+
+  @@index([propertyId])
+  @@index([representativeId])
+  @@index([status])
+  @@index([representativeId, status])
+  @@index([createdAt])
+}
+
+model AIEmailDraft {
+  id                String          @id @default(cuid())
+  inquiryId         String          @unique
+  draftContent      String
+  editedContent     String?
+  detectedLanguage  String          @default("en")
+  approvalStatus    ApprovalStatus  @default(PENDING)
+  rejectionCount    Int             @default(0)
+  generatedAt       DateTime        @default(now())
+  approvedAt        DateTime?
+  approvedById      String?
+  
+  // Relationships
+  inquiry           Inquiry         @relation(fields: [inquiryId], references: [id], onDelete: Cascade)
+  approvedBy        User?           @relation("DraftApprover", fields: [approvedById], references: [id])
+
+  @@index([approvalStatus])
+}
+
+model ViewingRequest {
+  id                String          @id @default(cuid())
+  propertyId        String
+  inquiryId         String?         @unique
+  requesterName     String
+  requesterEmail    String
+  requesterPhone    String?
+  preferredDate1    DateTime
+  preferredDate2    DateTime?
+  preferredDate3    DateTime?
+  status            ViewingStatus   @default(PENDING)
+  representativeId  String?
+  notes             String?
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  
+  // Relationships
+  property          Property        @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  inquiry           Inquiry?        @relation(fields: [inquiryId], references: [id])
+  representative    User?           @relation("ViewingRepresentative", fields: [representativeId], references: [id])
+
+  @@index([propertyId])
+  @@index([representativeId])
+  @@index([status])
+  @@index([preferredDate1])
+}
+
+
+
+model Favorite {
+  id          String    @id @default(cuid())
+  userId      String
+  propertyId  String
+  createdAt   DateTime  @default(now())
+  
+  // Relationships
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  property    Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, propertyId])
+  @@index([userId])
+  @@index([propertyId])
+}
+
+model RepresentativeAssignment {
+  id                String    @id @default(cuid())
+  representativeId  String
+  propertyId        String    @unique
+  assignedAt        DateTime  @default(now())
+  workloadCount     Int       @default(0)
+  isAvailable       Boolean   @default(true)
+  
+  // Relationships
+  representative    User      @relation(fields: [representativeId], references: [id], onDelete: Cascade)
+  property          Property  @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+
+  @@index([representativeId])
+  @@index([representativeId, isAvailable])
 }
 
 model Template {

@@ -1,0 +1,88 @@
+
+> my-app2@0.1.0 dev
+> next dev
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/snorres/pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/snorres/workspace/GitHub/my-app2/package-lock.json
+
+   ▲ Next.js 16.0.1 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.0.18:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 7.1s
+ POST /api/dev/mint-session 200 in 2.7s (compile: 2.3s, proxy.ts: 123ms, render: 265ms)
+ POST /api/dev/mint-session 200 in 33ms (compile: 7ms, proxy.ts: 14ms, render: 12ms)
+ POST /api/properties/cmhi9czp70004qs95ta8go93e/representative 200 in 4.5s (compile: 4.4s, proxy.ts: 29ms, render: 72ms)
+ DELETE /api/properties/cmhi9czp70004qs95ta8go93e/representative 204 in 102ms (compile: 40ms, proxy.ts: 14ms, render: 48ms)
+ GET /api/ping 200 in 1134ms (compile: 995ms, proxy.ts: 98ms, render: 41ms)
+ GET /api/ping 200 in 18ms (compile: 5ms, proxy.ts: 6ms, render: 8ms)
+ POST /api/dev/mint-session 200 in 166ms (compile: 42ms, proxy.ts: 19ms, render: 105ms)
+ POST /api/dev/mint-session 200 in 158ms (compile: 15ms, proxy.ts: 119ms, render: 25ms)
+dev cookie header (properties POST): d
+dev cookie header (properties POST): d
+ POST /api/properties 401 in 2.7s (compile: 2.6s, proxy.ts: 11ms, render: 104ms)
+ POST /api/properties 401 in 2.7s (compile: 2.6s, proxy.ts: 71ms, render: 72ms)
+ POST /api/dev/mint-session 200 in 36ms (compile: 12ms, proxy.ts: 6ms, render: 18ms)
+ POST /api/properties 400 in 95ms (compile: 15ms, proxy.ts: 64ms, render: 16ms)
+dev cookie header (properties POST): dev-user-id=cmhi9czor0000qs95qz3g1ki1
+ POST /api/properties 200 in 200ms (compile: 14ms, proxy.ts: 63ms, render: 123ms)
+ POST /api/dev/mint-session 200 in 152ms (compile: 34ms, proxy.ts: 81ms, render: 37ms)
+dev cookie header (properties POST): d
+ POST /api/properties 401 in 72ms (compile: 11ms, proxy.ts: 24ms, render: 37ms)
+ ○ Compiling /properties ...
+ GET /api/ping 200 in 765ms (compile: 204ms, proxy.ts: 249ms, render: 312ms)
+ POST /api/dev/mint-session 200 in 6.8s (compile: 4.5s, proxy.ts: 1497ms, render: 810ms)
+ POST /api/dev/mint-session 200 in 622ms (compile: 196ms, proxy.ts: 177ms, render: 249ms)
+dev cookie header (properties POST): d
+POST /api/properties error Error [PrismaClientKnownRequestError]: 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$workspace$2f$GitHub$2f$my$2d$app2$2f$src$2f$auth$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].property.create()` invocation in
+/Users/snorres/workspace/GitHub/my-app2/.next/dev/server/chunks/[root-of-the-server]__08d83b68._.js:400:208
+
+  397     status: 403
+  398 });
+  399 const { title, address, city, state, zipCode, country = 'USA', propertyType, price, bedrooms, bathrooms, squareFeet, description, amenities } = parsed.data;
+→ 400 const property = await __TURBOPACK__imported__module__$5b$project$5d2f$workspace$2f$GitHub$2f$my$2d$app2$2f$src$2f$auth$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].property.create(
+Unique constraint failed on the fields: (`address`,`ownerId`)
+    at <unknown> (src/app/api/properties/route.ts:120:44)
+    at async POST (src/app/api/properties/route.ts:120:22)
+  118 |     } = parsed.data
+  119 |
+> 120 |     const property = await prisma.property.create({
+      |                                            ^
+  121 |       data: {
+  122 |         title,
+  123 |         address, {
+  code: 'P2002',
+  meta: [Object],
+  clientVersion: '6.18.0'
+}
+ POST /api/properties 500 in 7.5s (compile: 2.4s, proxy.ts: 150ms, render: 5.0s)
+dev cookie header (properties POST): d
+ POST /api/properties 200 in 7.1s (compile: 4.8s, proxy.ts: 2.3s, render: 29ms)
+ POST /api/properties/cmhl3892w0007qsd7mjte1fwu/representative 200 in 2.5s (compile: 1882ms, proxy.ts: 149ms, render: 420ms)
+ DELETE /api/properties/cmhi9czp70004qs95ta8go93e/representative 204 in 1174ms (compile: 1120ms, proxy.ts: 25ms, render: 30ms)
+ GET /properties 200 in 2.9min (compile: 2.8min, proxy.ts: 412ms, render: 6.8s)
+ GET /properties/cmhl16u1a0005qs959153sr9y 200 in 3.1min (compile: 2.9min, proxy.ts: 125ms, render: 7.2s)
+ ○ Compiling /api/auth/[...nextauth] ...
+ GET /api/properties?page=1&pageSize=20 200 in 4.2s (compile: 1196ms, proxy.ts: 1376ms, render: 1585ms)
+ GET /api/api/users?role=REPRESENTATIVE 404 in 43s (compile: 37.1s, proxy.ts: 11ms, render: 5.5s)
+ GET /api/auth/session 200 in 58s (compile: 57s, proxy.ts: 270ms, render: 513ms)
+ GET /api/auth/session 200 in 29.3s (compile: 28.7s, proxy.ts: 51ms, render: 539ms)
+ GET /api/auth/session 200 in 240ms (compile: 75ms, proxy.ts: 114ms, render: 51ms)
+ GET /api/ping 200 in 327ms (compile: 141ms, proxy.ts: 101ms, render: 85ms)
+ POST /api/dev/mint-session 200 in 949ms (compile: 132ms, proxy.ts: 118ms, render: 699ms)
+ POST /api/dev/mint-session 200 in 980ms (compile: 490ms, proxy.ts: 68ms, render: 422ms)
+dev cookie header (properties POST): d
+dev cookie header (properties POST): d
+ POST /api/properties 200 in 917ms (compile: 293ms, proxy.ts: 81ms, render: 544ms)
+ POST /api/properties 200 in 970ms (compile: 347ms, proxy.ts: 235ms, render: 388ms)
+ POST /api/properties/cmhl3chvo000dqsd7n5eh4xci/representative 200 in 1263ms (compile: 380ms, proxy.ts: 172ms, render: 710ms)
+ POST /api/properties/cmhl3chvk000bqsd7uh5oyuw7/representative 200 in 1486ms (compile: 652ms, proxy.ts: 362ms, render: 471ms)
+ DELETE /api/properties/cmhi9czp70004qs95ta8go93e/representative 204 in 371ms (compile: 79ms, proxy.ts: 249ms, render: 43ms)
+ DELETE /api/properties/cmhl3chvo000dqsd7n5eh4xci/representative 204 in 676ms (compile: 292ms, proxy.ts: 19ms, render: 364ms)

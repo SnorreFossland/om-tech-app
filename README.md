@@ -14,6 +14,24 @@ pnpm dev
 bun dev
 ```
 
+Local E2E / Playwright notes
+-----------------------------
+
+The Next dev server can bind to IPv6 or IPv4 interfaces which may make local test runners try the wrong address (127.0.0.1 vs ::1). If you see connection refused errors from Playwright or curl, start the dev server bound to the IPv4 loopback to make localhost/127.0.0.1 reliable for tests:
+
+```bash
+HOST=127.0.0.1 npm run dev
+```
+
+To automatically detect a reachable base URL and run the Playwright E2E suite, use the helper script included in `./scripts`:
+
+```bash
+# detect a working base and run the e2e tests
+node scripts/run-e2e.js
+```
+
+This script will prefer `127.0.0.1:3000` and fall back to `localhost:3000` or your machine's LAN IP if necessary.
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
