@@ -2,7 +2,6 @@ import { test, expect, type APIResponse } from '@playwright/test'
 
 const BASE = process.env.BASE || 'http://localhost:3000'
 const SELLER_EMAIL = process.env.SELLER_EMAIL || 'seller@example.com'
-const PROPERTY_ID = process.env.PROPERTY_ID || 'cmhi9czp70004qs95ta8go93e'
 const REP_ID = process.env.REP_ID || 'cmhi9czp10002qs959mkf6aay'
 
 test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
@@ -88,8 +87,8 @@ test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
   const assignJson = await assign.json()
   expect(assignJson.data).toBeDefined()
 
-  // Unassign representative
-  const unassign = await request.delete(`${BASE}/api/properties/${PROPERTY_ID}/representative`, {
+  // Unassign representative (use the property we just created)
+  const unassign = await request.delete(`${BASE}/api/properties/${propertyId}/representative`, {
     headers: { cookie, 'x-dev-user-id': devId },
   })
   expect([200, 204]).toContain(unassign.status())
