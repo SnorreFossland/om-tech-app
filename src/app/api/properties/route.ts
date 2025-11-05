@@ -142,6 +142,16 @@ export async function POST(req: Request) {
       // Handle Prisma unique constraint error (duplicate property for same owner)
       if (e?.code === 'P2002') {
         console.warn('Duplicate property create detected', e.meta)
+        try {
+          // attempt to return the existing property (idempotent create)
+          const existing = await prisma.property.findFirst({ where: { address, ownerId: dbUser.id } })
+          if (existing) {
+            return NextResponse.json({ data: existing })
+          }
+        } catch (inner) {
+          console.warn('Error finding existing property after P2002', inner)
+        }
+        // Fall back to 409 if we couldn't locate the existing record
         return new NextResponse(JSON.stringify({ error: 'Property already exists', fields: e.meta?.target || null }), { status: 409 })
       }
       throw e
