@@ -117,7 +117,11 @@ export async function POST(req: Request) {
       amenities,
     } = parsed.data
 
+    // Idempotency: if a property with the same address already exists for this owner, return it
     try {
+      const preexisting = await prisma.property.findFirst({ where: { address, ownerId: dbUser.id } })
+      if (preexisting) return NextResponse.json({ data: preexisting })
+
       const property = await prisma.property.create({
         data: {
           title,
