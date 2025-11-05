@@ -14,6 +14,27 @@ pnpm dev
 bun dev
 ```
 
+## E2E tests (Playwright)
+
+[![E2E Tests](https://github.com/SnorreFossland/om-tech-app/actions/workflows/e2e.yml/badge.svg?branch=feature/001-property-sales-platform)](https://github.com/SnorreFossland/om-tech-app/actions/workflows/e2e.yml)
+
+This repository includes Playwright end-to-end tests and a GitHub Actions workflow that runs them.
+
+- Local quick run (parallel):
+
+```bash
+BASE=http://127.0.0.1:3000 npx playwright test
+```
+
+- CI-friendly / serial run (recommended for local verification):
+
+```bash
+npm run test:e2e:ci
+```
+
+More details are in `docs/E2E-README.md`.
+
+
 Local E2E / Playwright notes
 -----------------------------
 
