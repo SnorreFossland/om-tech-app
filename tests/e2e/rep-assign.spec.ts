@@ -47,6 +47,10 @@ test('rep assign/unassign via dev mint endpoint', async ({ request }) => {
       propertyId = createJson?.data?.id || createJson?.id
       break
     }
+    if (createRes) {
+      const text = await createRes.text().catch(() => '')
+      console.log('createRes debug', { status: createRes.status(), body: text })
+    }
     if (createRes && createRes.status() === 409) {
       try {
         const listRes = await request.get(`${BASE}/api/properties?page=1&pageSize=50`)

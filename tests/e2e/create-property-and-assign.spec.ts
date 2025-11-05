@@ -46,6 +46,11 @@ test('create property then assign/unassign representative (dev mint)', async ({ 
       propertyId = createJson?.data?.id || createJson?.id
       break
     }
+    // Log response for debugging when create did not return success
+    if (createRes) {
+      const text = await createRes.text().catch(() => '')
+      console.log('createRes debug', { status: createRes.status(), body: text })
+    }
     if (createRes && createRes.status() === 409) {
       // duplicate detected; try to find existing property by title or address
       try {
