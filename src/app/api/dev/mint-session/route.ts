@@ -22,17 +22,19 @@ export async function POST(req: Request) {
       : await prisma.user.findUnique({ where: { email } })
 
     if (!user && createIfMissing) {
-      // Create a minimal test user. Password is 'password' by default (hashed).
+      // Create-or-return a minimal test user (upsert) so concurrent calls don't hit P2002.
       const hashed = await bcrypt.hash('password', 10)
-      const u = await prisma.user.create({
-        data: {
+      const upserted = await prisma.user.upsert({
+        where: { email: email as string },
+        update: {},
+        create: {
           email: email ?? `dev+${Date.now()}@example.com`,
           password: hashed,
           name: email?.split('@')[0] ?? 'dev-user',
           role: role as any,
         },
       })
-      user = u
+      user = upserted
     }
 
     if (!user) return new NextResponse(JSON.stringify({ error: 'User not found' }), { status: 404 })
