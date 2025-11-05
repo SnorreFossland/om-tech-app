@@ -39,6 +39,31 @@ export async function POST(req: Request) {
 
     if (!user) return new NextResponse(JSON.stringify({ error: 'User not found' }), { status: 404 })
 
+    // In development, ensure there is a representative user available for tests.
+    // Tests assume a REP_ID exists; create a deterministic representative if missing.
+    try {
+      if (process.env.NODE_ENV === 'development') {
+        const repId = process.env.REP_ID || 'cmhi9czp10002qs959mkf6aay'
+        const repEmail = process.env.REP_EMAIL || `rep+${repId}@example.com`
+        const existingRep = await prisma.user.findUnique({ where: { id: repId } })
+        if (!existingRep) {
+          const hashedRep = await bcrypt.hash('password', 10)
+          await prisma.user.create({
+            data: {
+              id: repId,
+              email: repEmail,
+              password: hashedRep,
+              name: 'dev-rep',
+              role: 'REPRESENTATIVE',
+            },
+          })
+        }
+      }
+    } catch (e) {
+      // non-fatal for minting, just log
+      console.warn('dev: ensure representative error', e)
+    }
+
     // Set a simple dev cookie with the user id. HttpOnly for safety but available
     // to server-side checks via the cookie header. Expires in 1 hour.
     const maxAge = 60 * 60
